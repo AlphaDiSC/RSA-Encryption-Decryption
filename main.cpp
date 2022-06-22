@@ -1,4 +1,7 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 int arr[16],cm[16];
 
@@ -184,17 +187,22 @@ int main()                                                        // Driver Code
     int d = find_d(e,phi);
 
     //Enrypting the message.....................................................
-    
-	string message = "Prepare For War. Enemy approaching from NORTH-WEST";
-	cout<<"\n"<<"Plaintext : "<<message<<endl;
-	
+    	
 	string key = "Secret";   //key for cipher
     cout<<"\nOriginal Key:   "<<key<<endl;
     int l=key.length();
 	string encoded = encoder(key);
-	
-	string ct = kwc_encrypt(message,encoded);
-	cout<<"\nCiphered Text : "<<ct<<endl;
+
+    ifstream pt("plainText.txt");
+    stringstream str1;
+    str1 << pt.rdbuf();
+    string plaintext = str1.str();
+    pt.close();
+
+    string ciphertext = kwc_encrypt(plaintext, encoded);
+    ofstream ct("cipherText.txt");
+    ct << ciphertext;
+    ct.close();
 	
 	//..........................................................................
 	
@@ -240,7 +248,12 @@ int main()                                                        // Driver Code
     cout<<"\n             :   "<<dkey;
     
     //Decrypting CipherText.....................................................
-    cout<<"\n\nDeciphered Text: "<<kwc_decrypt(ct, encoded);
-    
+   
+    encoded = encoder(dkey);
+    string deciphertext = kwc_decrypt(ciphertext, encoded);
+    ofstream dt("decipherText.txt");
+    dt << deciphertext;
+    dt.close();
+   
     return 0;
 }
