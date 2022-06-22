@@ -188,10 +188,10 @@ int main()                                                        // Driver Code
 
     //Enrypting the message.....................................................
     	
-	string key = "Secret";   //key for cipher
+    string key = "Secret";   //key for cipher
     cout<<"\nOriginal Key:   "<<key<<endl;
     int l=key.length();
-	string encoded = encoder(key);
+    string encoded = encoder(key);
 
     ifstream pt("plainText.txt");
     stringstream str1;
@@ -204,10 +204,10 @@ int main()                                                        // Driver Code
     ct << ciphertext;
     ct.close();
 	
-	//..........................................................................
+    //..........................................................................
 	
-	cout<<"\n***********************\nRSA Values:\n";
-	cout<<"\n"<<"p = "<<p;
+    cout<<"\n***********************\nRSA Values:\n";
+    cout<<"\n"<<"p = "<<p;
     cout<<"\n"<<"q = "<<q;
     cout<<"\n"<<"n = pq = "<<n;
     cout<<"\n"<<"phi = "<<phi;
@@ -215,7 +215,7 @@ int main()                                                        // Driver Code
     cout<<"\n"<<"d = "<<d;
     cout<<"\n***********************\n";
     
-	//Encrypting the key with RSA...............................................
+    //Encrypting the key with RSA...............................................
     string_to_ascii(key);
     
     double c,m;
